@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -55,62 +54,4 @@ spec:
             initialDelaySeconds: 40
             periodSeconds: 20
             timeoutSeconds: 3
-=======
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: trainbook
-spec:
-  replicas: 1
-
-  selector:
-    matchLabels:
-      app: trainbook
-
-  template:
-    metadata:
-      labels:
-        app: trainbook
-
-    spec:
-      containers:
-        - name: trainbook
-
-          image: image-registry.openshift-image-registry.svc:5000/train-ticket-reservation/trainbook:1.2
-
-          ports:
-            - name: http
-              containerPort: 9090
-              protocol: TCP
-
-          envFrom:
-            - configMapRef:
-                name: trainbook-config
-
-            - secretRef:
-                name: trainbook-secret
-
-          resources:
-            requests:
-              cpu: 100m
-              memory: 256Mi
-            limits:
-              cpu: 500m
-              memory: 512Mi
-
-          readinessProbe:
-            tcpSocket:
-              port: 9090
-            initialDelaySeconds: 20
-            periodSeconds: 10
-            timeoutSeconds: 3
-            failureThreshold: 6
-
-          livenessProbe:
-            tcpSocket:
-              port: 9090
-            initialDelaySeconds: 40
-            periodSeconds: 20
-            timeoutSeconds: 3
->>>>>>> 6f21fe0848d86e309728e7ab6dd8d7402a49751c
             failureThreshold: 3

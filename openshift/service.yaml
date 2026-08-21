@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 apiVersion: v1
 kind: Service
 metadata:
@@ -13,20 +12,4 @@ spec:
       targetPort: 9090
       protocol: TCP
 
-=======
-apiVersion: v1
-kind: Service
-metadata:
-  name: trainbook
-spec:
-  selector:
-    app: trainbook
-
-  ports:
-    - name: http
-      port: 9090
-      targetPort: 9090
-      protocol: TCP
-
->>>>>>> 6f21fe0848d86e309728e7ab6dd8d7402a49751c
   type: ClusterIP
