@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -11,4 +12,19 @@ data:
   DB_HOST: "oracle-db.example.com"
   DB_PORT: "1521"
   DB_SERVICE: "ORCL"
+=======
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: trainbook-config
+data:
+  APP_NAME: "Train Ticket Reservation System"
+  APP_ENV: "openshift"
+  APP_PORT: "9090"
+
+  # Oracle Database
+  DB_HOST: "oracle-db.example.com"
+  DB_PORT: "1521"
+  DB_SERVICE: "ORCL"
+>>>>>>> 6f21fe0848d86e309728e7ab6dd8d7402a49751c
   DB_USERNAME: "RESERVATION"

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -14,4 +15,22 @@ spec:
               service:
                 name: trainbook
                 port:
+=======
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: trainbook
+spec:
+  ingressClassName: openshift-default
+  rules:
+    - host: trainbook.apps-crc.testing
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: trainbook
+                port:
+>>>>>>> 6f21fe0848d86e309728e7ab6dd8d7402a49751c
                   number: 9090
