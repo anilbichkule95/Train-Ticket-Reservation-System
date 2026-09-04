@@ -53,7 +53,7 @@ pipeline {
                         java -version
                         mvn -version
 
-                        mvn -B clean package -DskipTests
+                        mvn -B -Dmaven.repo.local=/tmp/jenkins/.m2/repository clean package -DskipTests
                     '''
                 }
             }
