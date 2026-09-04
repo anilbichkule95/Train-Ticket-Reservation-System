@@ -22,6 +22,6 @@ spec:
   output:
     to:
       kind: ImageStreamTag
-      name: trainbook:1.2
+      name: trainbook:1.3
 
   triggers: []

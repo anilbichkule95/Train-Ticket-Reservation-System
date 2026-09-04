@@ -2,12 +2,14 @@
 			box-sizing: border-box;
 		}
 		body{
-			background-image: url(sandy.jpg);
-			background-repeat: no-repeat;
-			margin-left: 10%;
-			margin-right: 10%;
-			
-		}
+    background-image: url(vande-bharat.jpg);
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: cover;
+    background-attachment: fixed;
+    margin-left: 10%;
+    margin-right: 10%;
+}
 		.hd{
 			text-align: center;
 			padding:10px;

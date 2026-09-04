@@ -3,10 +3,15 @@ pipeline {
         label 'openshift-agent'
     }
 
+    triggers {
+        githubPush()
+    }
+
+
     environment {
         PROJECT = 'train-ticket'
         APP_NAME = 'trainbook'
-        IMAGE_TAG = '1.2'
+        IMAGE_TAG = '1.3'
 
         // Use writable locations inside the OpenShift agent
         KUBECONFIG = '/tmp/jenkins/.kube/config'
