@@ -22,7 +22,7 @@ pipeline {
 
         stage('Checkout') {
             steps {
-                echo "triggered by webhook"
+                echo "triggered by webhook....!!!!"
                 checkout scm
             }
         }
