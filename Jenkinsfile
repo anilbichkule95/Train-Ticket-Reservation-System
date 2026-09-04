@@ -7,6 +7,10 @@ pipeline {
         PROJECT = 'train-ticket'
         APP_NAME = 'trainbook'
         IMAGE_TAG = '1.2'
+
+        // Use writable locations inside the OpenShift agent
+        KUBECONFIG = '/tmp/jenkins/.kube/config'
+        MAVEN_OPTS = '-Dmaven.repo.local=/tmp/jenkins/.m2/repository'
     }
 
     stages {
@@ -50,15 +54,18 @@ pipeline {
                         echo "Maven Build"
                         echo "======================================"
 
+                        mkdir -p /tmp/jenkins/.m2/repository
+
                         java -version
                         mvn -version
 
-                        mvn -B -Dmaven.repo.local=/tmp/jenkins/.m2/repository clean package -DskipTests
+                        mvn -B \
+                            -Dmaven.repo.local=/tmp/jenkins/.m2/repository \
+                            clean package -DskipTests
                     '''
                 }
             }
         }
-
 
         stage('Verify WAR') {
             steps {
@@ -80,6 +87,8 @@ pipeline {
                         echo "OpenShift Connection"
                         echo "======================================"
 
+                        mkdir -p /tmp/jenkins/.kube
+
                         oc version
 
                         echo ""
@@ -88,7 +97,7 @@ pipeline {
 
                         echo ""
                         echo "Current Project:"
-                        oc project
+                        oc project || true
                     '''
                 }
             }
@@ -102,9 +111,12 @@ pipeline {
                         echo "Selecting Project"
                         echo "======================================"
 
+                        mkdir -p /tmp/jenkins/.kube
+
                         oc project ${PROJECT}
 
                         echo ""
+                        echo "Current Project:"
                         oc project
                     '''
                 }
@@ -163,6 +175,7 @@ pipeline {
                         oc get istag ${APP_NAME}:${IMAGE_TAG}
 
                         echo ""
+                        echo "Builds:"
                         oc get builds
                     '''
                 }
