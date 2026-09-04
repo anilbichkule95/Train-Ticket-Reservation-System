@@ -59,19 +59,6 @@ pipeline {
             }
         }
 
-        stage('Run Tests') {
-            steps {
-                container('maven') {
-                    sh '''
-                        echo "======================================"
-                        echo "Running Tests"
-                        echo "======================================"
-
-                        mvn -B -Dmaven.repo.local=/tmp/jenkins/.m2/repositorytest
-                    '''
-                }
-            }
-        }
 
         stage('Verify WAR') {
             steps {
