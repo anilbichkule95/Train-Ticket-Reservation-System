@@ -67,7 +67,7 @@ pipeline {
                         echo "Running Tests"
                         echo "======================================"
 
-                        mvn -B test
+                        mvn -B -Dmaven.repo.local=/tmp/jenkins/.m2/repositorytest
                     '''
                 }
             }
